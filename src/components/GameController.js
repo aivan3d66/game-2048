@@ -1,23 +1,21 @@
-import React, {useState} from "react";
-import {View, StyleSheet, Text, Dimensions} from "react-native";
-import GestureRecognizer, {
-  swipeDirections
-} from "react-native-swipe-gestures";
+import React, {useEffect, useState} from "react";
 
 import {
-  generateRandom,
   getEmptyBoard,
+  generateRandom,
   moveLeft,
   moveRight,
   moveUp,
   moveDown,
-  checkWin,
   isOver,
+  checkWin
 } from "./GameBoard";
 
-import Cell from "./Cell";
-
-var width = Dimensions.get("window").width;
+const Cell = ({number}) => {
+  return (
+    <div className={`cell cell-${number}`}>{number > 0 ? number : ""}</div>
+  );
+};
 
 const GameController = () => {
   const [board, updateBoard] = useState(generateRandom(getEmptyBoard()));
@@ -54,45 +52,48 @@ const GameController = () => {
     checkEndGame();
   };
 
+  const onKeyDown = (e) => {
+    switch (e.key) {
+      case "ArrowLeft":
+        left();
+        break;
+      case "ArrowRight":
+        right();
+        break;
+      case "ArrowUp":
+        up();
+        break;
+      case "ArrowDown":
+        down();
+        break;
+
+      default:
+    }
+  };
+
+  useEffect(() => {
+    window.addEventListener("keydown", onKeyDown);
+
+    return () => {
+      window.removeEventListener("keydown", onKeyDown);
+    };
+  });
+
   return (
-    <GestureRecognizer
-      style={styles.screenStyle}
-      onSwipeLeft={left}
-      onSwipeRight={right}
-      onSwipeUp={up}
-      onSwipeDown={down}
-    >
-      <Text style={styles.headerStyle}>2048</Text>
-      <View style={styles.boardStyle}>
-        {board.map((row, rowIndex) =>
-          <View key={`cell-${rowIndex}`} style={styles.rowStyle}>
-            {row.map((value, cellIndex) =>
-              <Cell key={`cell-${cellIndex}`} value={value}/>
-            )}
-          </View>
-        )}
-      </View>
-    </GestureRecognizer>
+    <>
+      <div className="game-board">
+        {board.map((row, i) => {
+          return (
+            <div key={`row-${i}`} className="row">
+              {row.map((cell, j) => (
+                <Cell key={`cell-${i}-${j}`} number={cell}/>
+              ))}
+            </div>
+          );
+        })}
+      </div>
+    </>
   );
 };
-
-const styles = StyleSheet.create({
-  headerStyle: {
-    padding: 40,
-    fontSize: 50,
-    textAlign: "center",
-    color: "olive",
-    fontWeight: "bold"
-  },
-  boardStyle: {
-    width: width,
-    padding: 5,
-    backgroundColor: "olive"
-  },
-  rowStyle: {
-    flexDirection: "row",
-    height: width / 4
-  }
-});
 
 export default GameController;

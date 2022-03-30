@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-
 import {
   getEmptyBoard,
   generateRandomCellValue,
@@ -10,6 +9,13 @@ import {
   isOver,
   checkWin
 } from "./GameBoard";
+
+const KEYS ={
+  ARROW_LEFT: "ArrowLeft",
+  ARROW_RIGHT: "ArrowRight",
+  ARROW_UP: "ArrowUp",
+  ARROW_DOWN: "ArrowDown",
+}
 
 const Cell = ({number}) => {
   return (
@@ -56,16 +62,16 @@ const GameController = () => {
 
   const onKeyDown = (e) => {
     switch (e.key) {
-      case "ArrowLeft":
+      case KEYS.ARROW_LEFT:
         left();
         break;
-      case "ArrowRight":
+      case KEYS.ARROW_RIGHT:
         right();
         break;
-      case "ArrowUp":
+      case KEYS.ARROW_UP:
         up();
         break;
-      case "ArrowDown":
+      case KEYS.ARROW_DOWN:
         down();
         break;
 

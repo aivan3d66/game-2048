@@ -28,6 +28,8 @@ const GameController = () => {
     }
   };
 
+  const resetState = () => updateBoard(generateRandom(getEmptyBoard()));
+
   const left = () => {
     const newBoard = moveLeft(board);
     updateBoard(generateRandom(newBoard));
@@ -92,6 +94,7 @@ const GameController = () => {
           );
         })}
       </div>
+      <div  className="reset-btn" onClick={resetState}>Reset</div>
     </>
   );
 };

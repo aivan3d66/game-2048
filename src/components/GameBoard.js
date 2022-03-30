@@ -1,8 +1,9 @@
 export const getEmptyBoard = () => [
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0],
-  [0, 0, 0, 0]
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
+  [0, 0, 0, 0, 0],
 ];
 
 const hasValue = (board, value) => {
@@ -21,8 +22,8 @@ export const isFull = (board) => {
 };
 
 const getRandomPosition = () => {
-  const rowPosition = Math.floor(Math.random() * 4);
-  const colPosition = Math.floor(Math.random() * 4);
+  const rowPosition = Math.floor(Math.random() * 5);
+  const colPosition = Math.floor(Math.random() * 5);
   return [rowPosition, colPosition];
 };
 
@@ -152,8 +153,6 @@ export const isOver = (board) => {
   if (hasDiff(board, moveUp(board))) {
     return false;
   }
-  if (hasDiff(board, moveDown(board))) {
-    return false;
-  }
-  return true;
+  return !hasDiff(board, moveDown(board));
+
 };

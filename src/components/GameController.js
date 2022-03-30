@@ -2,7 +2,7 @@ import React, {useEffect, useState} from "react";
 
 import {
   getEmptyBoard,
-  generateRandom,
+  generateRandomCellValue,
   moveLeft,
   moveRight,
   moveUp,
@@ -18,7 +18,7 @@ const Cell = ({number}) => {
 };
 
 const GameController = () => {
-  const [board, updateBoard] = useState(generateRandom(getEmptyBoard()));
+  const [board, updateBoard] = useState(generateRandomCellValue(getEmptyBoard()));
 
   const checkEndGame = () => {
     if (checkWin(board)) {
@@ -28,29 +28,29 @@ const GameController = () => {
     }
   };
 
-  const resetState = () => updateBoard(generateRandom(getEmptyBoard()));
+  const resetState = () => updateBoard(generateRandomCellValue(getEmptyBoard()));
 
   const left = () => {
     const newBoard = moveLeft(board);
-    updateBoard(generateRandom(newBoard));
+    updateBoard(generateRandomCellValue(newBoard));
     checkEndGame();
   };
 
   const right = () => {
     const newBoard = moveRight(board);
-    updateBoard(generateRandom(newBoard));
+    updateBoard(generateRandomCellValue(newBoard));
     checkEndGame();
   };
 
   const up = () => {
     const newBoard = moveUp(board);
-    updateBoard(generateRandom(newBoard));
+    updateBoard(generateRandomCellValue(newBoard));
     checkEndGame();
   };
 
   const down = () => {
     const newBoard = moveDown(board);
-    updateBoard(generateRandom(newBoard));
+    updateBoard(generateRandomCellValue(newBoard));
     checkEndGame();
   };
 

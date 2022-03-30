@@ -32,7 +32,7 @@ const getRandomNumber = (min, max) => {
   return Math.floor(rand);
 }
 
-export const generateRandom = (board) => {
+export const generateRandomCellValue = (board) => {
   if (isFull(board)) {
     return board;
   }
@@ -73,7 +73,6 @@ const merge = (board) => {
       }
     }
   }
-
   return board;
 };
 
@@ -91,7 +90,6 @@ const reverse = (board) => {
       reverseBoard[i][j] = board[i][board[i].length - 1 - j];
     }
   }
-
   return reverseBoard;
 };
 
@@ -163,5 +161,4 @@ export const isOver = (board) => {
     return false;
   }
   return !hasDiff(board, moveDown(board));
-
 };

@@ -25,12 +25,12 @@ body {
 }
 
 .App h1 {
-  font-family: Bradley Hand, cursive;
+  font-family: Comic Sans MS, Comic Sans, cursive;
   text-transform: uppercase;
 }
 
 .App p {
-  font-family: Bradley Hand, cursive;
+  font-family: Comic Sans MS, Comic Sans, cursive;
 }
 
 .game-board {

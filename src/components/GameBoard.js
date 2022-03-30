@@ -27,6 +27,11 @@ const getRandomPosition = () => {
   return [rowPosition, colPosition];
 };
 
+const getRandomNumber = (min, max) => {
+  let rand = min + Math.random() * (max + 1 - min);
+  return Math.floor(rand);
+}
+
 export const generateRandom = (board) => {
   if (isFull(board)) {
     return board;

@@ -22,9 +22,9 @@ const GameController = () => {
 
   const checkEndGame = () => {
     if (checkWin(board)) {
-      console.log("You win!");
+      alert("You win!");
     } else if (isOver(board)) {
-      console.log("Game over!");
+      alert("Game over!");
     }
   };
 

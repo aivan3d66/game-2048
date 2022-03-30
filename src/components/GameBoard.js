@@ -42,7 +42,11 @@ export const generateRandom = (board) => {
     [row, col] = getRandomPosition();
   }
 
-  board[row][col] = 2;
+  if (getRandomNumber(1, 100) < 80) {
+    board[row][col] = 2;
+  } else {
+    board[row][col] = 4;
+  }
   return board;
 };
 

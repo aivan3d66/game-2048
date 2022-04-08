@@ -1,4 +1,6 @@
-# Getting Started with Create React App
+# 2048 the game
+
+My copy of 2048 is a single-player sliding tile puzzle video game written by Italian web developer Gabriele Cirulli and published on GitHub.
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
